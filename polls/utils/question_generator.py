@@ -1,3 +1,11 @@
+# setup django
+import os
+
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'polls_django_app.settings')
+import django
+
+django.setup()
+
 import random
 
 from django.contrib.auth.models import User
@@ -27,7 +35,7 @@ class QuestionGenerator:
 
         random_nr_or_choices = random.randint(2, 5)
         for i in range(1, random_nr_or_choices):
-            question.choice_set.create(
+            question.choices.create(
                 choice_text=f"Choice {i}"
             )
 
@@ -37,4 +45,4 @@ class QuestionGenerator:
         random_user = random.choice(users)
 
         for group in random_user.groups.all():
-            question.questionpermission_set.create(user=random_user, group=group, can_view=True, can_edit=True)
+            question.permissions.create(user=random_user, group=group, can_view=True, can_edit=True)
