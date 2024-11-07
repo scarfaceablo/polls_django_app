@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Polls</title>
+</head>
+<body>
+<div style="padding-bottom: 20px">
+<form method="post" action="/accounts/logout/">
+    {% csrf_token %}
+    <button type="submit">Logout</button>
+</form>
+</div>
+{% block content %}
+{% endblock %}
+</body>
+</html>
+<style>
+    html {
+ /* Base styles go here */
+ font: 14px/1.5 Arial, sans-serif;
+ background: #ffffff;
+}
+
+body {
+ background: #ffffff;
+ padding: 30px;
+ width: 920px;
+ margin: 0 auto;
+}
+</style>

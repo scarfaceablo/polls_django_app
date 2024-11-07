@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% if type == 'my' %}
+        <h3>My Questions</h3>
+    {% else %}
+        <h3>All Questions</h3>
+    {% endif %}
+
+    <ul>
+        {% for question in questions %}
+
+            <li><span class="left-value">{{ question.question_text }}</span><span
+                    class="right-value">{{ question.pub_date }}</span></li>
+
+        {% endfor %}
+    </ul>
+{% endblock %}
+<style>
+    ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        width: 300px;
+    }
+
+    li {
+        display: flex;
+        justify-content: space-between;
+        padding: 8px;
+        border-bottom: 1px solid #ccc;
+    }
+
+    .left-value {
+        /* Left-aligned by default */
+    }
+
+    .right-value {
+        /* Flex alignment pushes it to the right */
+    }
+</style>

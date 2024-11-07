@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div>
+        <a href="{% url 'polls:questions' %}">Questions list</a>
+    </div>
+    <div>
+        <a href="{% url 'polls:my-questions' type='my' %}">My questions</a>
+    </div>
+{% endblock %}
