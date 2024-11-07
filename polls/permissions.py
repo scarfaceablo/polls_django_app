@@ -13,17 +13,17 @@ class QuestionPermissionMixin:
             return obj.question.has_permission(user, permission_type)
         return False
 
-    def dispatch(self, request, *args, **kwargs):
-        """
-        Overrides dispatch to add a permission check for each request.
-        """
-        permission_type = "edit" if self.request.method in ["POST", "PUT", "PATCH", "DELETE"] else "view"
-
-        # Check permission on the object
-        if not self.has_permission(self.get_object(), permission_type):
-            raise HttpResponseForbidden("You do not have permission to access this resource.")
-
-        return super().dispatch(request, *args, **kwargs)
+    # def dispatch(self, request, *args, **kwargs):
+    #     """
+    #     Overrides dispatch to add a permission check for each request.
+    #     """
+    #     permission_type = "edit" if self.request.method in ["POST", "PUT", "PATCH", "DELETE"] else "view"
+    #
+    #     # Check permission on the object
+    #     if not self.has_permission(self.get_object(), permission_type):
+    #         raise HttpResponseForbidden("You do not have permission to access this resource.")
+    #
+    #     return super().dispatch(request, *args, **kwargs)
 
     def get_object(self):
         """
